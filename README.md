@@ -1,7 +1,11 @@
 ````markdown
 # Aerofoil Analysis Tool
 
-An interactive desktop application for generating and analyzing NACA airfoils. The application allows users to vary NACA parameters and visualize aerodynamic characteristics through an intuitive graphical interface. This program uses the standard sfoil analysis tool as the physics engine. I haven't documented the all the files properly (only some main files have documentation). I plan to document it properly soon.
+An interactive desktop application for generating and analyzing NACA airfoils. The application allows users to vary NACA parameters and visualize aerodynamic characteristics through an intuitive graphical interface.
+
+The application uses **XFOIL** as the aerodynamic analysis backend.
+
+> **Note:** Documentation is still a work in progress. While the core files have been documented, I am currently expanding the documentation to cover the entire project.
 
 ## Features
 
@@ -12,7 +16,7 @@ An interactive desktop application for generating and analyzing NACA airfoils. T
 - Performance plots, including:
   - Lift Coefficient (Cl)
   - Drag Coefficient (Cd)
-  - Lift-to-Drag ratio (Cl/Cd)
+  - Lift-to-Drag Ratio (Cl/Cd)
   - Additional aerodynamic plots as the project evolves
 
 ## Technologies Used
@@ -21,13 +25,14 @@ An interactive desktop application for generating and analyzing NACA airfoils. T
 - PyQt6
 - NumPy
 - Matplotlib
+- XFOIL
 
 ## Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/AddyDev-Projects/SAM--Airfoil-Analysis-Tool
+git clone https://github.com/AddyDev-Projects/SAM--Airfoil-Analysis-Tool.git
 cd SAM--Airfoil-Analysis-Tool
 ```
 
@@ -60,16 +65,18 @@ python app_ui.py
 
 ## Future Improvements
 
-- Additional series supports
+- Support for additional NACA series
 - Improved visualization tools
-- Better haptics on button clicks
-- Conversion to .exe file
+- Better button interaction and UI responsiveness
+- Standalone executable release
+
+## Project Repository
+
+GitHub: **https://github.com/AddyDev-Projects/SAM--Airfoil-Analysis-Tool**
 
 ## Acknowledgements
 
-I would like to sincerely thank **Maxon David Nazareth** (https://www.linkedin.com/in/mdnazareth/)and **Saianish** for their valuable help with the mathematical foundations and aerodynamic concepts used throughout this project.
-
-
+I would like to sincerely thank **[Maxon David Nazareth](https://www.linkedin.com/in/mdnazareth/)** and **Saianish** for their valuable help with the mathematical foundations and aerodynamic concepts used throughout this project.
 
 ## License
 
