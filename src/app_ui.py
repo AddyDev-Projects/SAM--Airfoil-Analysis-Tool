@@ -160,8 +160,8 @@ QScrollBar::sub-page:horizontal {
 
     def add_card(self, foil_data: AirFoil) -> AirfoilCard:
 
-
         card = AirfoilCard(foil_data)
+
         self.list_layout.addWidget(card)
 
         card.airfoil_updated.connect(self.airfoil_updated)
@@ -242,7 +242,7 @@ class AnalysisWindow(QMainWindow):
 
         layout = QHBoxLayout(central_widget)
 
-        self.setWindowIcon(QtGui.QIcon(str((Path(__file__).parent / "../" / "resources" / "app_icon.png").resolve())))
+        self.setWindowIcon(QtGui.QIcon(str(standards.PROJECT_ROOT / "resources" / "app_icon.png")))
 
         layout.setContentsMargins(15, 15, 15, 15)
 
@@ -1023,7 +1023,7 @@ class AnalysisWindow(QMainWindow):
 
         for re in range(int(data.reynolds_num_start), int(data.reynolds_num_stop + 1), int(data.reynolds_num_step)):
 
-            file_path = (Path(__file__).parent / "../" / f"polar{re}.txt").resolve()
+            file_path = (standards.PROJECT_ROOT / f"polar{re}.txt").resolve()
 
             alpha_i, cl_i, cd_i, cm_i = DataUtils.parse_file(str(file_path))
 
@@ -1035,13 +1035,15 @@ class AnalysisWindow(QMainWindow):
 
             cm.append(cm_i)
 
-            file_path.unlink()
+            if file_path.exists():
+
+                file_path.unlink()
 
         
         QApplication.restoreOverrideCursor()
 
 
-        with open("incomplete_runs.txt", "r") as file:
+        with open(str(standards.PROJECT_ROOT / "incomplete_runs.txt"), "r") as file:
 
             lines = file.readlines()
 
@@ -1050,21 +1052,22 @@ class AnalysisWindow(QMainWindow):
                 failed_Re.append(float(line))
 
 
-            if failed_Re:
-
-                msg = QMessageBox(self)
-
-                msg.setIcon(QMessageBox.Icon.Critical)
-
-                msg.setWindowTitle("Convergence Failure")
-
-                msg.setText(f"Analysis at certain reynold's numbers exceeded the convergence limit. These values are plotted till their convergence. The following reynold's numbers caused convergence issues: {failed_Re}")
-
-                msg.exec()
-
         file.close()
 
-        (Path(__file__).parent / "../" / "incomplete_runs.txt").resolve().unlink()
+        (standards.PROJECT_ROOT / "incomplete_runs.txt").resolve().unlink()
+
+
+        if failed_Re:
+
+            msg = QMessageBox(self)
+
+            msg.setIcon(QMessageBox.Icon.Critical)
+
+            msg.setWindowTitle("Convergence Failure")
+
+            msg.setText(f"Analysis at certain reynold's numbers exceeded the convergence limit. These values are plotted till their convergence. The following reynold's numbers caused convergence issues: {failed_Re}")
+
+            msg.exec()
 
         self.cl_a_plot.add_plot(PlotBlock(alpha, cl), data.color, data.name, "Alpha (°)", "Cl", "Cl vs. Alpha")
         self.cd_a_plot.add_plot(PlotBlock(alpha, cd), data.color, data.name, "Alpha (°)", "Cd", "Cd vs. Alpha")
@@ -1103,7 +1106,7 @@ class AnalysisWindow(QMainWindow):
 
         for re in range(int(data.reynolds_num_start), int(data.reynolds_num_stop + 1), int(data.reynolds_num_step)):
 
-            file_path = (Path(__file__).parent / "../" / f"polar{re}.txt").resolve()
+            file_path = (standards.PROJECT_ROOT / f"polar{re}.txt").resolve()
 
             alpha_i, cl_i, cd_i, cm_i = DataUtils.parse_file(str(file_path))
 
@@ -1121,7 +1124,7 @@ class AnalysisWindow(QMainWindow):
         QApplication.restoreOverrideCursor()
 
 
-        with open("incomplete_runs.txt", "r") as file:
+        with open(standards.PROJECT_ROOT / "incomplete_runs.txt", "r") as file:
 
             lines = file.readlines()
 
@@ -1144,7 +1147,7 @@ class AnalysisWindow(QMainWindow):
 
         file.close()
 
-        (Path(__file__).parent / "../" / "incomplete_runs.txt").resolve().unlink()
+        (standards.PROJECT_ROOT / "incomplete_runs.txt").resolve().unlink()
 
         self.cl_a_plot.update_plot(i, PlotBlock(alpha, cl), data.color, data.name)
         self.cd_a_plot.update_plot(i, PlotBlock(alpha, cd), data.color, data.name)
@@ -1190,7 +1193,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
 
-    app.setWindowIcon(QtGui.QIcon(str((Path(__file__).parent / "../" / "resources/app_icon.png").resolve())))
+    app.setWindowIcon(QtGui.QIcon(str(standards.PROJECT_ROOT / "resources" / "app_icon.png")))
 
     window = AnalysisWindow()
 

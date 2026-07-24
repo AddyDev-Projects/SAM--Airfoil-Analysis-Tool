@@ -287,7 +287,7 @@ class FoilUtils:
     @staticmethod
     def save_airfoil(filename: str, xu: NDArray[np.float64], yu: NDArray[np.float64], xl: NDArray[np.float64], yl: NDArray[np.float64]) -> Path:
 
-        with open(filename, "w") as file:
+        with open(standards.PROJECT_ROOT / filename, "w") as file:
 
             file.write(filename + "\n")
 
@@ -301,7 +301,7 @@ class FoilUtils:
 
         file.close()
 
-        return (Path(__file__).parent / "../" / filename).resolve()
+        return (standards.PROJECT_ROOT / filename).resolve()
 
 
     @staticmethod
@@ -326,7 +326,7 @@ QUIT
 
             startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         
-            process = subprocess.Popen("xfoil", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, startupinfo=startupinfo)
+            process = subprocess.Popen(str(standards.PROJECT_ROOT / "xfoil"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, startupinfo=startupinfo, cwd=standards.PROJECT_ROOT)
 
             output, error = process.communicate(input=commands, timeout=10)
 
@@ -344,7 +344,7 @@ QUIT
     @staticmethod
     def clean() -> None:
 
-        folder = (Path(__file__).parent / "../").resolve()
+        folder = standards.PROJECT_ROOT
 
         for file in folder.glob("polar*.txt"):
 
@@ -358,7 +358,7 @@ QUIT
 
                 file.unlink()
 
-        file = (Path(__file__).parent / "../" / "incomplete_runs.txt").resolve()
+        file = (standards.PROJECT_ROOT / "incomplete_runs.txt").resolve()
 
         if file.exists():
 
@@ -477,7 +477,7 @@ class AirFoil:
 
         i = 0
 
-        with open("incomplete_runs.txt", "w") as file:
+        with open(standards.PROJECT_ROOT / "incomplete_runs.txt", "w") as file:
 
             for re in range(int(self.reynolds_num_start), int(self.reynolds_num_stop) + 1, int(self.reynolds_num_step)):
 
@@ -541,7 +541,7 @@ class NACA_4_Standard_AirFoil(AirFoil):
 
         i = 0
 
-        with open("incomplete_runs.txt", "w") as file:
+        with open(standards.PROJECT_ROOT / "incomplete_runs.txt", "w") as file:
 
             for re in range(int(self.reynolds_num_start), int(self.reynolds_num_stop) + 1, int(self.reynolds_num_step)):
 
@@ -602,7 +602,7 @@ class NACA_5_Standard_Airfoil(AirFoil):
 
         i = 0
 
-        with open("incomplete_runs.txt", "w") as file:
+        with open(standards.PROJECT_ROOT / "incomplete_runs.txt", "w") as file:
 
             for re in range(int(self.reynolds_num_start), int(self.reynolds_num_stop) + 1, int(self.reynolds_num_step)):
 

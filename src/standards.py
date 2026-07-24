@@ -1,3 +1,9 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+PROJECT_ROOT = BASE_DIR.parent
+
 MAX_RE_STEPS = 12
 
 DEFAULT_START_ALPHA = -10
@@ -19,3 +25,7 @@ NACA_4_AIRFOIL = "NACA 4"
 CUSTOM_AIRFOIL = "Custom"
 
 NACA_5_AIRFOIL = "NACA 5"
+
+if __name__ == "__main__":
+    print(f"Project root: {PROJECT_ROOT}")
+    print(f"Base dir: {BASE_DIR}")

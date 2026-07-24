@@ -55,7 +55,7 @@ class AddNACA4StandardFoil(QDialog):
         """)
 
         self.re_start_input = QLineEdit()
-        self.re_start_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_start_input.setPlaceholderText("Reynolds Number Start (e.g. 100000)")
 
         self.re_start_input.setStyleSheet("""
                                       
@@ -68,7 +68,7 @@ class AddNACA4StandardFoil(QDialog):
         """)
 
         self.re_stop_num_input = QLineEdit()
-        self.re_stop_num_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_stop_num_input.setPlaceholderText("Reynolds Number Stop (e.g. 100000)")
 
         self.re_stop_num_input.setStyleSheet("""
                                       
@@ -472,9 +472,9 @@ class AddCustomFoil(QDialog):
 
         self.name_input.setPlaceholderText("Enter the name of the foil")
 
-        self.re_start_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_start_input.setPlaceholderText("Reynolds Number Start (e.g. 100000)")
 
-        self.re_stop_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_stop_input.setPlaceholderText("Reynolds Number Stop (e.g. 100000)")
 
         self.re_step_input.setPlaceholderText("Reynolds Number Step (e.g. 10000)")
 
@@ -687,7 +687,7 @@ class AddNACA5StandardFoil(QDialog):
         """)
 
         self.re_start_input = QLineEdit()
-        self.re_start_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_start_input.setPlaceholderText("Reynolds Number Start (e.g. 100000)")
 
         self.re_start_input.setStyleSheet("""
                                       
@@ -700,7 +700,7 @@ class AddNACA5StandardFoil(QDialog):
         """)
 
         self.re_stop_num_input = QLineEdit()
-        self.re_stop_num_input.setPlaceholderText("Reynolds Number (e.g. 100000)")
+        self.re_stop_num_input.setPlaceholderText("Reynolds Number Stop (e.g. 100000)")
 
         self.re_stop_num_input.setStyleSheet("""
                                       

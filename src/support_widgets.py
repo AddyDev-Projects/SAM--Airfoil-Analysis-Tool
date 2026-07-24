@@ -785,6 +785,10 @@ class PlotWidget(QWidget):
         
         """
 
+        if (pos > len(self.plot_data.plot_blocks) - 1) or (pos < 0):
+
+            return
+
         plot_block = self.plot_data.plot_blocks[pos]
 
         hidden = not value if value != None else plot_block.hidden
