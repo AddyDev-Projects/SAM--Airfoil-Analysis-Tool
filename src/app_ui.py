@@ -776,17 +776,17 @@ class AnalysisWindow(QMainWindow):
 
                 file.close()
 
-        self.save_location = file_path
+            # self.save_location = file_path
 
-        msg: QMessageBox = QMessageBox(self)
+            msg: QMessageBox = QMessageBox(self)
 
-        msg.setIcon(QMessageBox.Icon.Information)
+            msg.setIcon(QMessageBox.Icon.Information)
 
-        msg.setWindowTitle("Project Saved Sucessfully")
+            msg.setWindowTitle("Project Saved Sucessfully")
 
-        msg.setText(f"The project has been saved at {file_path} sucessfully")
+            msg.setText(f"The project has been saved at {file_path} sucessfully")
 
-        msg.exec()
+            msg.exec()
 
 
     def load_project(self):
