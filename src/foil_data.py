@@ -308,7 +308,7 @@ class FoilUtils:
     def run_xfoil(dat_file: str, Re: int = 100000, start_alpha: int = -5, end_alpha: int = 15, step_alpha: int = 1) -> None|str:
 
         commands = f"""
-LOAD {dat_file}
+LOAD {Path(dat_file).name}
 PANE
 OPER
 VISC {Re}
@@ -325,7 +325,6 @@ QUIT
             startupinfo = subprocess.STARTUPINFO()
 
             startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-
         
             process = subprocess.Popen("xfoil", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, startupinfo=startupinfo)
 

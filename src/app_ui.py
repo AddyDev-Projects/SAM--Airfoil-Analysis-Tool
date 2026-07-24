@@ -743,7 +743,7 @@ class AnalysisWindow(QMainWindow):
 
         data = self.get_json_data()
 
-        if save_as:
+        if save_as:  # Future feature to implement "Save As" functionality, currently not used in the code
 
             if Path(self.save_location).exists():
 
@@ -753,7 +753,7 @@ class AnalysisWindow(QMainWindow):
 
                     file.close()
 
-                    return
+                    raise NotImplementedError("Save As functionality is not implemented yet.")
                 
         dialog = SaveProject()
 
