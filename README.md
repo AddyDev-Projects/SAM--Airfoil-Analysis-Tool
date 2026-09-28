@@ -1,4 +1,3 @@
-````markdown
 # Aerofoil Analysis Tool
 
 An interactive desktop application for generating and analyzing NACA airfoils. The application allows users to vary NACA parameters and visualize aerodynamic characteristics through an intuitive graphical interface.
@@ -81,4 +80,3 @@ I would like to sincerely thank **[Maxon David Nazareth](https://www.linkedin.co
 ## License
 
 This project is licensed under the MIT License.
-````
